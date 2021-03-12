@@ -17,7 +17,7 @@ import { RFValue } from "react-native-responsive-fontsize";
 import { SearchBar, ListItem, Input } from "react-native-elements";
 
 import MyHeader from "../components/MyHeader";
-import { BookSearch } from "react-native-google-books";
+import { CurrencySearch } from "react-native-google-currency";
 
 export default class ItemRequestScreen extends Component {
   constructor() {
@@ -163,7 +163,6 @@ export default class ItemRequestScreen extends Component {
         });
       });
   };
-
   componentDidMount() {
     this.getItemRequest();
     this.getIsItemRequestActive();
@@ -192,9 +191,9 @@ export default class ItemRequestScreen extends Component {
   async getItemsFromApi(itemName) {
     this.setState({ itemName: itemName });
     if (itemName.length > 2) {
-      var items = await BookSearch.searchbook(
+      var items = await CurrencySearch.searchcurrency(
         ItemName,
-        "AIzaSyASyOjOtJla-X-b3io2eLoaUc_bIRFSIIc"
+        ""
       );
       this.setState({
         dataSource: Items.data,
