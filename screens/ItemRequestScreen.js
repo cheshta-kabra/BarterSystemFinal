@@ -39,9 +39,22 @@ export default class ItemRequestScreen extends Component {
       showFlatlist: false,
     };
   }
-
+ComponentDidMount(){
+  getData();
+}
   createUniqueId() {
     return Math.random().toString(36).substring(7);
+  }
+  getData(){
+  fetch("http://data.fixer.io/api/latest?access_key=1f7dd48123a05ae588283b5e13fae944&format=1")
+  .then(response=>{
+    return response.json();
+  }).then(responseData =>{
+    var currencyCode = this.state.currencyCode
+    var currency = responseData.rates.INR
+    var value =  69 / currency
+    console.log(value);
+  })
   }
 
   addRequest = async (itemName, reasonToRequest) => {
